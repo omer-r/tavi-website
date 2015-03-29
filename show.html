@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width">
+	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.0.23.min.js"></script>
+	<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    direction:rtl;
+}
+th, td {
+    padding: 5px;
+}
+</style>
+	<script>
+	var OrderObject;
+
+	$(document).ready(function() {
+
+		Parse.initialize("E4ni1ikWYDImGZAL8o5jYAuX5GloBxQyA6z7YTrm", "0tnWhmz9uf0xWOH9QpntSYI182sc68spcPhwN1MA");    
+			OrderObject = Parse.Object.extend("OrderObject");
+			var query = new Parse.Query(OrderObject);
+			query.equalTo("done", false);
+			query.find({
+			  success: function(results) {
+			  	var s = ''+results.length+' <br/>\
+			  	<table style="width:100%;">\
+			    <caption>Open orders</caption>\
+			    <tr>\
+			      <th>ID</th>\
+			      <th>Name</th>\
+			      <th>Date</th>\
+			      <th>Time</th>\
+			      <th>Address</th>\
+			      <th>Phone</th>\
+			    </tr>';
+			  	for(var i=0, len=results.length; i<len; i++) {
+			  		var result = results[i];
+			  		s+= '<tr>';
+			  		s+= '<td>'+ result.id + '</td>';
+			  		s+= '<td>' + result.attributes.fullname + '</td>';
+			  		s+= '<td>' + result.attributes.date + '</td>';
+			  		s+= '<td>' + result.attributes.time + '</td>';
+			  		s+= '<td>' + result.attributes.address + '</td>';
+			  		s+= '<td>' + result.attributes.phone + '</td>';
+			  		s+= '</tr>'
+			  	}
+			  	$("#list").html(s);
+			  },
+			  error: function(error) {
+			    alert("Error: " + error.code + " " + error.message);
+			  }
+			});
+
+	});
+
+	</script>
+	<style>
+	body {
+		margin-left: 25px;
+		margin-right: 25px;
+		font-family: arial;
+	}
+	input {
+		width: 100%;
+		height: 25px;
+	}
+	textarea {
+		width: 100%;
+	}
+
+	</style>
+</head>
+ 
+<body>
+ 
+<h2>Tavi Reporter</h2>
+ 
+<div id="list">
+</div>
+ 
+</body>
+</html>
