@@ -536,3 +536,36 @@ label[for='toggle-all'] {
     font-family: "Alef Hebrew","Helvetica Neue";
     
 }
+
+.two-col {
+    width:350px;
+    overflow: hidden;/* Makes this div contain its floats */
+}
+
+.two-col .col1,
+.two-col .col2 {
+    width: 48%;
+}
+
+.two-col .col1 {
+    float: right;
+}
+
+.two-col .col2 {
+    float: left;
+}
+
+.two-col label {
+    display: block;
+}
+
+.two-col select {
+    display: block;
+    width: 98%!important;
+}
+.two-col label {
+    display: block;
+}
+#order_time1 {
+	float: right;
+}

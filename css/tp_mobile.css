@@ -505,11 +505,25 @@ label[for='toggle-all'] {
     margin-bottom: 10px;
     font-size: 20px;
     padding: 3px;
+    width: 30%;
+    height: 38px! important;
+    direction: rtl;
+    font-family: "Alef Hebrew","Helvetica Neue";
+}
+/*
+#tp_app .content .section .order select {
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding: 3px;
     width: 292px;
     height: 38px! important;
     direction: rtl;
     font-family: "Alef Hebrew","Helvetica Neue";
 }
+*/
 
 #tp_app .content .section .order .order-form {
     margin-top: 25px;
@@ -540,4 +554,36 @@ label[for='toggle-all'] {
     text-align: center;
     font-family: "Alef Hebrew","Helvetica Neue";
     
+}
+.two-col {
+    width:296px;
+    overflow: hidden;/* Makes this div contain its floats */
+}
+
+.two-col .col1,
+.two-col .col2 {
+    width: 49%;
+}
+
+.two-col .col1 {
+    float: right;
+}
+
+.two-col .col2 {
+    float: left;
+}
+
+.two-col label {
+    display: block;
+}
+
+.two-col select {
+    display: block;
+    width: 99%!important;
+}
+.two-col label {
+    display: block;
+}
+#order_time1 {
+	float: right;
 }

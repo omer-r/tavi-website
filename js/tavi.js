@@ -8,7 +8,8 @@ $(function() {
 	var OrderView = Parse.View.extend({
 		events: {
 			//"click .log-out": "logOut",
-			"click #order_select": "order_select",
+			"change #order_time1":"select_time_changed",
+			"focus #order_date": "order_select_date",
 			"submit form.order-form": "order"
 		},
 
@@ -19,9 +20,49 @@ $(function() {
 			this.render();
 		},
 		
-		order_select: function() {
+		order_select_date: function() {
 			var today = new Date().toISOString().split('T')[0];
-		    document.getElementsByName("order_date")[0].setAttribute('min', today);
+			var date_field =  document.getElementsByName("order_date")[0];
+			date_field.setAttribute('type', 'date');
+			date_field.setAttribute('min', today);
+		},
+		
+		select_time_changed: function() {
+			var opt2 = '<select class="order_select" name="order_time2" id="order_time2">\
+							<option value="0" selected>עד שעה?</option>';
+			
+			switch($('#order_time1 option:selected').val()) {
+				case '1800':
+					opt2 += '<option value="1830">18:30</option>';
+				case '1830':
+					opt2 += '<option value="1900">19:00</option>';
+				case '1900':
+					opt2 += '<option value="1930">19:30</option>';
+				case '1930':
+					opt2 += '<option value="2000">20:00</option>';
+				case '2000':
+					opt2 += '<option value="2030">20:30</option>';
+				case '2030':
+					opt2 += '<option value="2100">21:00</option>';
+				case '2100':
+					opt2 += '<option value="2130">21:30</option>';
+				case '2130':
+					opt2 += '<option value="2130">22:00</option>';
+					break;
+				default:
+					opt2 += '\
+								<option value="1830">18:30</option>\
+								<option value="1900">19:00</option>\
+								<option value="1930">19:30</option>\
+								<option value="2000">20:00</option>\
+								<option value="2030">20:30</option>\
+								<option value="2100">21:00</option>\
+								<option value="2130">21:30</option>';
+					break;
+			}
+			opt2 += '</select>';
+			
+			self.$(".col2").html(opt2).show();
 		},
 
 		order: function(e) {
@@ -29,19 +70,19 @@ $(function() {
 			var _fullname = this.$("#order_fullname").val();
 			var _address = this.$("#order_address").val();
 			var _date = this.$("#order_date").val();
-			//////
-			var e = document.getElementById("order_time");
-			var _time = e.options[e.selectedIndex].text;
-			//////
+			var e1 = document.getElementById("order_time1");
+			var _s_time = e1.options[e1.selectedIndex].text;
+			var e2 = document.getElementById("order_time2");
+			var _e_time = e2.options[e2.selectedIndex].text;
 			var _phone = this.$("#order_phone").val();
-
 			var OrderObject = Parse.Object.extend("OrderObject");
 			var order = new OrderObject();
 			order.save({
 						fullname:	_fullname,
 						address:	_address,
 						date:		_date,
-						time:		_time,
+						start_time:		_s_time,
+						end_time:		_e_time,
 						phone:		_phone,
 						done:		false
 						//user:		Parse.User.current(),
@@ -168,5 +209,5 @@ $(function() {
 	});
 
 	new AppView;
-	Parse.history.start();
+	//Parse.history.start({});
 });

@@ -12,8 +12,10 @@
 <script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
 <script src="js/tavi.js"></script>
 <meta name="viewport" content="width=device-width">
-<link rel="stylesheet" media="screen and (min-width: 500px)" href="css/tp_web.css" type="text/css">
-<link rel="stylesheet" media="screen and (max-width: 499px)" href="css/tp_mobile.css" type="text/css">
+<link rel="stylesheet" media="screen and (min-width: 500px)"
+	href="css/tp_web.css" type="text/css">
+<link rel="stylesheet" media="screen and (max-width: 499px)"
+	href="css/tp_mobile.css" type="text/css">
 </head>
 
 <body>
@@ -26,7 +28,10 @@
 		<div class="content"></div>
 	</div>
 
-	<div id="credits">התשלום יתבצע רק כשהשליח הפרטי שלך יגיע אליך.<br>המשלוח בעלות של 19 ש"ח, ניתן לשלם במזומן או באשראי.</div>
+	<div id="credits">
+		התשלום יתבצע רק כשהשליח הפרטי שלך יגיע אליך.<br>המשלוח בעלות של
+		19 ש"ח, ניתן לשלם במזומן או באשראי.
+	</div>
 
 	<!-- Templates -->
 
@@ -52,27 +57,49 @@
     </script>
 
 	<script type="text/template" id="order-form-template">
-	<div class="section">
-      <header id="header"></header>
-      <div class="order">
-        <form class="order-form">
-          <div class="error" style="display:none">הייתה תקלה בעת שמירת הטופס<br>אנו מתנצלים על אי הנוחות<br>ניתן להתקשר ולהמשיך את ההזמנה דרך <a href="tel:0547596607">הטלפון</a></div>
-		  <div class="success" style="display:none">תודה על הזמנתך</div>
-          <input type="text" id="order_fullname" placeholder="שם מלא" required/>
-          <input type="address" id="order_address" placeholder="איפה נוח לך לקבל את המשלוח?" />
-		  <input type="text" id="order_date" name="order_date" placeholder="מתי נוח לך לקבל את המשלוח?"  onfocus="(this.type='date')"  >
-		  <select class="order_select" name="order_time" id="order_time">
-            <option value="0" selected>באיזו שעה?</option>
-            <option value="6">18:00-19:00</option>
-            <option value="7">19:00-20:00</option>
-            <option value="8">20:00-21:00</option>
-            <option value="9">21:00-22:00</option>
-          </select>
-		  <input type="text" id="order_phone" placeholder="טלפון סלולרי" required/>
-          <button>הזמן עכשיו</button>
-        </form>
-      </div>
-    </script>
+		<div class="section">
+			<header id="header"></header>
+			<div class="order">
+				<form class="order-form">
+					<div class="error" style="display:none">הייתה תקלה בעת שמירת הטופס<br>אנו מתנצלים על אי הנוחות<br>ניתן להתקשר ולהמשיך את ההזמנה דרך <a href="tel:0547596607">הטלפון</a></div>
+					<div class="success" style="display:none">תודה על הזמנתך</div>
+					<input type="text" id="order_fullname" placeholder="שם מלא" required/>
+					<input type="address" id="order_address" placeholder="איפה נוח לך לקבל את המשלוח?" />
+					<input type="text" id="order_date" name="order_date" placeholder="באיזה יום?"    >
+					<div class="two-col">
+    					<div class="col1">
+        					<select class="order_select" name="order_time1" id="order_time1" style="margin-right:0px;">
+								<option value="0" selected>משעה?</option>
+								<option value="1800">18:00</option>
+								<option value="1830">18:30</option>
+								<option value="1900">19:00</option>
+								<option value="1930">19:30</option>
+								<option value="2000">20:00</option>
+								<option value="2030">20:30</option>
+								<option value="2100">21:00</option>
+								<option value="2130">21:30</option>
+							</select>
+    					</div>
+						<div class="col2">
+        					<select class="order_select" name="order_time2" id="order_time2">
+								<option value="0" selected>עד שעה?</option>
+								<option value="1830">18:30</option>
+								<option value="1900">19:00</option>
+								<option value="1930">19:30</option>
+								<option value="2000">20:00</option>
+								<option value="2030">20:30</option>
+								<option value="2100">21:00</option>
+								<option value="2130">21:30</option>
+								<option value="2200">22:00</option>
+							</select>
+						</div>
+					</div>
+					<input type="text" id="order_phone" placeholder="טלפון סלולרי" required pattern="\d{3}[\-]\d{7}" title="הכנס מספר טלפון בן 10 ספרות ומקף באופן הבא: 050-1234567"/>
+					<button>הזמן עכשיו</button>
+				</form>
+			</div>
+		</div>
+	</script>
 
 
 </body>
