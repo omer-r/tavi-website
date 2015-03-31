@@ -64,7 +64,7 @@
 					<div class="error" style="display:none">הייתה תקלה בעת שמירת הטופס<br>אנו מתנצלים על אי הנוחות<br>ניתן להתקשר ולהמשיך את ההזמנה דרך <a href="tel:0547596607">הטלפון</a></div>
 					<div class="success" style="display:none">תודה על הזמנתך</div>
 					<input type="text" id="order_fullname" placeholder="שם מלא" required/>
-					<input type="address" id="order_address" placeholder="איפה נוח לך לקבל את המשלוח?" />
+					<input type="address" id="order_address" placeholder="לאן נוח לך שנגיע?" />
 					<input type="text" id="order_date" name="order_date" placeholder="באיזה יום?"    >
 					<div class="two-col">
     					<div class="col1">
@@ -94,7 +94,8 @@
 							</select>
 						</div>
 					</div>
-					<input type="text" id="order_phone" placeholder="טלפון סלולרי" required pattern="\d{3}[\-]\d{7}" title="הכנס מספר טלפון בן 10 ספרות ומקף באופן הבא: 050-1234567"/>
+					<input type="text" id="order_phone" placeholder="טלפון סלולרי" required pattern="(\d{10})|(\d{3}[\-]\d{7})" title="הכנס מספר טלפון בן 10 ספרות ומקף באופן הבא: 050-1234567"/>
+					<label>החבילה והתעודה יוחזרו למחרת באותה שעה<br>ניתן לתאם עם השליח זמן או מיקום מסירה אחר</label>
 					<button>הזמן עכשיו</button>
 				</form>
 			</div>
